@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Änderungsschneiderei Yousef Omar | Koblenz</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            light: '#e8d5b5',
+                            DEFAULT: '#c6a87c',
+                            dark: '#9a7b4f',
+                        },
+                        dark: {
+                            base: '#111111',
+                            panel: 'rgba(26, 26, 26, 0.75)', /* Leicht transparente Karten */
+                            border: 'rgba(198, 168, 124, 0.3)'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            color: #ffffff; /* Hellere Schrift für bessere Lesbarkeit */
+            overflow-x: hidden;
+            /* Hintergrundbild direkt einbinden */
+            background-color: #0a0a0a;
+            background-image: url('damask.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        /* Ein dunkles Overlay über dem Body-Hintergrund, damit die weiße Schrift immer lesbar bleibt */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.7); /* Verdunkelt das damask.webp etwas */
+            z-index: -1;
+        }
+
+        /* --- Elegant Panels (Transparenz & Goldener Shadow) --- */
+        .elegant-panel {
+            background-color: rgba(15, 15, 15, 0.75); /* Leichte Transparenz */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(198, 168, 124, 0.4);
+            border-radius: 1rem;
+            position: relative;
+            /* Goldener Drop-Shadow hinter allen Karten */
+            box-shadow: 0 12px 35px -5px rgba(198, 168, 124, 0.25), 0 4px 15px -5px rgba(198, 168, 124, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Ornate corners for specific panels */
+        .ornate-corners::before,
+        .ornate-corners::after {
+            content: '';
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            border: 1px solid #c6a87c;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        .ornate-corners::before {
+            top: 10px; left: 10px;
+            border-right: none; border-bottom: none;
+        }
+        .ornate-corners::after {
+            bottom: 10px; right: 10px;
+            border-left: none; border-top: none;
+        }
+
+        /* --- Buttons --- */
+        .btn-outline-gold {
+            border: 1px solid #c6a87c;
+            color: #c6a87c;
+            background: rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            backdrop-filter: blur(5px);
+        }
+        .btn-outline-gold:hover {
+            background: rgba(198, 168, 124, 0.2);
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(198, 168, 124, 0.3);
+        }
+
+        .heading-serif {
+            font-family: 'Playfair Display', serif;
+            color: #c6a87c;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+        }
+
+        /* Forms */
+        .elegant-input {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(198, 168, 124, 0.3);
+            color: #ffffff;
+        }
+        .elegant-input:focus {
+            outline: none;
+            border-color: #c6a87c;
+            background: rgba(0,0,0,0.7);
+            box-shadow: 0 0 10px rgba(198, 168, 124, 0.2);
+        }
+
+        /* Lists */
+        ul.service-list {
+            list-style: none; padding: 0; margin: 0;
+        }
+        ul.service-list li {
+            position: relative; padding-left: 1.2rem; margin-bottom: 0.5rem; color: #e2e8f0;
+        }
+        ul.service-list li::before {
+            content: '♦'; position: absolute; left: 0; color: #c6a87c; font-size: 0.8em; top: 0.1em;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col items-center py-10 px-4 sm:px-6 lg:px-8 selection:bg-gold selection:text-dark-base">
+
+    <main class="w-full max-w-2xl space-y-8 z-10">
+
+        <!-- 1. MAIN IDENTITY CARD (Split Layout: Bild oben, Aktionen unten) -->
+        <div class="elegant-panel overflow-hidden">
+            
+            <!-- Top Half: Image & Text Overlay -->
+            <div class="relative h-[22rem] w-full border-b border-gold/30">
+                <!-- Background Image (Schneiderei Thema) -->
+                <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=1200&auto=format&fit=crop" 
+                     alt="Änderungsschneiderei Yousef Omar" 
+                     class="absolute inset-0 w-full h-full object-cover object-center opacity-80 mix-blend-luminosity">
+                     
+                <!-- Dark Gradient Overlay for readability -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent z-10"></div>
+
+                <!-- Content Overlay -->
+                <div class="absolute inset-0 flex flex-col items-center justify-end pb-8 px-6 text-center z-20">
+                    
+                    <!-- Rating Badge (Google Style) -->
+                    <div class="absolute top-6 left-6 inline-flex items-center gap-1.5 px-3 py-1 rounded bg-black/60 backdrop-blur-md border border-gold/40 text-gold text-sm font-bold shadow-lg">
+                        <span>4,8</span>
+                        <div class="flex text-gold text-xs">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <span class="text-gray-300 font-normal text-xs ml-1">(93)</span>
+                    </div>
+
+                    <!-- Status Badge -->
+                    <div class="absolute top-6 right-6 inline-flex items-center gap-2 px-3 py-1 rounded bg-black/60 backdrop-blur-md border border-red-500/40 text-gray-200 text-xs font-semibold shadow-lg"> 
+                        <i class="fa-regular fa-clock text-red-400"></i>
+                        <span>Geschlossen · Öffnet Fr 09:00</span>
+                    </div>
+                    
+                    <!-- Title/Name -->
+                    <h1 class="heading-serif text-3xl md:text-4xl font-bold text-white mb-2 leading-tight">
+                        Änderungs&shy;schneiderei Yousef Omar
+                    </h1>
+                    
+                    <!-- Subtitle -->
+                    <p class="text-gold-light text-sm md:text-base font-medium uppercase tracking-widest drop-shadow-lg">
+                        Meisterhafte Schneiderei in Koblenz
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bottom Half: Actions & Badges -->
+            <div class="p-6 md:p-8 flex flex-col items-center gap-6 bg-black/40 backdrop-blur-sm"> 
+                
+                <!-- Category Pills -->
+                <div class="flex flex-wrap justify-center gap-2">
+                    <span class="px-3 py-1.5 rounded-sm bg-black/60 border border-gold/30 text-xs text-gray-200 shadow-md">
+                        <i class="fa-solid fa-scissors text-gold mr-1.5"></i> Maßschneiderei
+                    </span>
+                    <span class="px-3 py-1.5 rounded-sm bg-black/60 border border-gold/30 text-xs text-gray-200 shadow-md">
+                        <i class="fa-solid fa-shirt text-gold mr-1.5"></i> Änderungen
+                    </span>
+                    <span class="px-3 py-1.5 rounded-sm bg-black/60 border border-gold/30 text-xs text-gray-200 shadow-md">
+                        <i class="fa-solid fa-tape text-gold mr-1.5"></i> Anpassungen
+                    </span>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row justify-center gap-4 w-full mt-2">
+                    <a href="tel:02619823834" class="btn-outline-gold px-6 py-3.5 rounded text-xs font-bold flex items-center justify-center gap-2 w-full sm:w-auto flex-1">
+                        <i class="fa-solid fa-phone text-lg"></i>
+                        Jetzt anrufen
+                    </a>
+                    <a href="https://schneiderei-yousef.de" target="_blank" class="btn-outline-gold px-6 py-3.5 rounded text-xs font-bold flex items-center justify-center gap-2 w-full sm:w-auto flex-1">
+                        <i class="fa-solid fa-globe text-lg"></i>
+                        Website
+                    </a>
+                    <a href="https://maps.google.com/?q=Ferdinand-Sauerbruch-Straße+27,+56073+Koblenz" target="_blank" class="btn-outline-gold px-4 py-3.5 rounded text-xs font-bold flex items-center justify-center gap-2 w-full sm:w-auto">
+                        <i class="fa-solid fa-route text-lg"></i>
+                        Route
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. STATUS / INFO BAR -->
+        <div class="grid grid-cols-3 gap-3 md:gap-4">
+            <div class="elegant-panel p-4 flex flex-col items-center justify-center text-center">
+                <div class="text-gold text-xl mb-2"><i class="fa-solid fa-location-dot drop-shadow-md"></i></div>
+                <div class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Standort</div>
+                <div class="text-xs text-white font-medium">56073<br>Koblenz</div>
+            </div>
+            <div class="elegant-panel p-4 flex flex-col items-center justify-center text-center">
+                <div class="text-gold text-xl mb-2"><i class="fa-solid fa-star drop-shadow-md"></i></div>
+                <div class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Bewertung</div>
+                <div class="text-xs text-white font-medium">4,8 Sterne<br>93 Rezensionen</div>
+            </div>
+            <div class="elegant-panel p-4 flex flex-col items-center justify-center text-center">
+                <div class="text-gold text-xl mb-2"><i class="fa-solid fa-phone drop-shadow-md"></i></div>
+                <div class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Kontakt</div>
+                <div class="text-xs text-white font-medium">0261<br>9823834</div>
+            </div>
+        </div>
+
+        <!-- 3. WELCOME TEXT -->
+        <div class="elegant-panel p-8 text-center relative overflow-hidden ornate-corners">
+            <!-- Background ornament subtle -->
+            <i class="fa-solid fa-pen-nib absolute -right-6 -bottom-6 text-6xl text-gold opacity-[0.03]"></i>
+            
+            <div class="text-gold text-xl mb-4"><i class="fa-solid fa-quote-left"></i></div>
+            <h2 class="heading-serif text-2xl md:text-3xl mb-4">Meisterhafte Schneiderei.<br>Maßgeschneiderte Träume.</h2>
+            <div class="w-16 h-px bg-gold/50 mx-auto mb-6"></div>
+            
+            <p class="text-gray-200 text-sm md:text-base leading-relaxed text-center font-light">
+                Willkommen bei <span class="text-gold">Yousef Omar</span>. Wir vereinen traditionelles Schneiderhandwerk mit zeitloser Eleganz.<br><br>
+                Egal ob individuelle Maßanzüge, exklusive Brautkleider oder die perfekte Anpassung Ihrer Lieblingsstücke – wir kreieren und ändern mit höchster Präzision, erlesener Stoffauswahl und viel Liebe zum Detail. Ihre Persönlichkeit steht bei uns im Mittelpunkt.
+            </p>
+        </div>
+
+        <!-- 4. SERVICES -->
+        <div id="leistungen" class="elegant-panel p-8">
+            <h2 class="heading-serif text-2xl text-center mb-8">Unser Service</h2>
+            
+            <div class="flex flex-col gap-2">
+                <!-- Service 1 -->
+                <div class="border border-gold/20 rounded bg-black/30 p-4">
+                    <div class="flex items-center gap-4 mb-3">
+                        <span class="text-gold text-lg w-6 text-center"><i class="fa-solid fa-scissors"></i></span>
+                        <h3 class="font-serif text-lg text-white">Änderungen & Reparaturen</h3>
+                    </div>
+                    <ul class="service-list ml-10 text-sm">
+                        <li>Hosen kürzen / enger machen</li>
+                        <li>Kleider & Röcke anpassen</li>
+                        <li>Reißverschlüsse erneuern</li>
+                        <li>Risse und Löcher kunstvoll reparieren</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="border border-gold/20 rounded bg-black/30 p-4 mt-2">
+                    <div class="flex items-center gap-4 mb-3">
+                        <span class="text-gold text-lg w-6 text-center"><i class="fa-solid fa-ruler-combined"></i></span>
+                        <h3 class="font-serif text-lg text-white">Maßanfertigung</h3>
+                    </div>
+                    <ul class="service-list ml-10 text-sm">
+                        <li>Individuelle Maßanzüge</li>
+                        <li>Exklusive Braut- und Abendkleider</li>
+                        <li>Anpassung von Konfektionsware auf Maß</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. LOCATION & CONTACT SECTION -->
+        <div id="kontakt" class="elegant-panel ornate-corners p-8 md:p-10">
+            <div class="text-center mb-8">
+                <h2 class="heading-serif text-2xl mb-2">Besuchen Sie uns</h2>
+                <div class="w-12 h-px bg-gold/50 mx-auto mb-6"></div>
+                
+                <div class="bg-black/40 border border-gold/20 p-5 rounded-lg inline-block text-left mb-6 w-full shadow-inner">
+                    <div class="flex items-start gap-4">
+                        <div class="text-gold mt-1 text-xl"><i class="fa-solid fa-map-location-dot"></i></div>
+                        <div class="text-sm text-gray-200 space-y-1">
+                            <p class="font-bold text-white text-base">Änderungsschneiderei Yousef Omar</p>
+                            <p>Ferdinand-Sauerbruch-Straße 27</p>
+                            <p>56073 Koblenz</p>
+                            <p class="text-gold-light mt-2 text-xs uppercase tracking-wider"><i class="fa-solid fa-building mr-1"></i> Etage 0 · Hotel Oronto GmbH</p>
+                            <p class="text-gray-400 text-xs mt-1"><i class="fa-solid fa-location-crosshairs mr-1"></i> Plus Code: 9H4C+J5 Koblenz</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-4 w-full">
+                    <a href="https://maps.google.com/?q=Ferdinand-Sauerbruch-Straße+27,+56073+Koblenz" target="_blank" class="w-full py-4 bg-gold hover:bg-gold-light text-black font-bold text-sm tracking-widest uppercase transition-all shadow-[0_0_15px_rgba(198,168,124,0.4)] hover:shadow-[0_0_25px_rgba(198,168,124,0.6)]">
+                        Routenplaner öffnen
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-gold/20 text-center text-xs text-gray-400">
+                <p>&copy; 2024 Änderungsschneiderei Yousef Omar.</p>
+                <div class="flex justify-center gap-4 mt-3">
+                    <a href="https://schneiderei-yousef.de" class="hover:text-gold transition-colors"><i class="fa-solid fa-globe mr-1"></i> Webseite</a>
+                    <span class="text-gray-600">|</span>
+                    <a href="#" class="hover:text-gold transition-colors"><i class="fa-solid fa-share-nodes mr-1"></i> Teilen</a>
+                    <span class="text-gray-600">|</span>
+                    <a href="#" class="hover:text-gold transition-colors">Impressum</a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>
