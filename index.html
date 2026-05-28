@@ -163,12 +163,12 @@
         <!-- 1. MAIN IDENTITY CARD (Split Layout mit horizontal beschnittenem Bild) -->
         <div class="elegant-panel overflow-hidden">
             
-            <!-- Tab-Bereich für das Bild (h-[26rem] sorgt für den horizontalen Ausschnitt) -->
-            <div class="relative h-[26rem] w-full border-b border-gold/30 bg-neutral-900" style="border-color: var(--panel-border);">
+            <!-- Tab-Bereich für das Bild (h-[18rem] auf Mobilgeräten sorgt für einen schmaleren Ausschnitt) -->
+            <div class="relative h-[18rem] sm:h-[26rem] w-full border-b border-gold/30 bg-neutral-900" style="border-color: var(--panel-border);">
                 <!-- Lokales Bild mit automatischer Fallback-Steuerung für reibungslose Darstellung -->
                 <img src="schneiderei_yousef_bild.webp" 
                      alt="Änderungsschneiderei Yousef Omar" 
-                     class="absolute inset-0 w-full h-full object-cover object-[center_15%]"
+                     class="absolute inset-0 w-full h-full object-cover object-[center_20%]"
                      onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1595079676339-1534801ad6cf?auto=format&fit=crop&q=80&w=1200';">
                      
                 <!-- Dynamischer Gradient über dem Bild für erstklassige Text-Lesbarkeit -->
@@ -177,19 +177,13 @@
                 <!-- Text-Inhalt über dem Bild -->
                 <div class="absolute inset-0 flex flex-col items-center justify-end pb-8 px-6 text-center z-20">
                     
-                    <!-- Rating Badge (Groß für beste Lesbarkeit) -->
-                    <div class="absolute top-6 left-6 inline-flex items-center gap-2 px-4 py-2 rounded theme-bg-badge theme-text-gold text-base font-bold shadow-lg">
+                    <!-- Rating Badge (Groß für beste Lesbarkeit, positioniert sich flexibel) -->
+                    <div class="absolute top-4 left-4 sm:top-6 sm:left-6 inline-flex items-center gap-2 px-4 py-2 rounded theme-bg-badge theme-text-gold text-base font-bold shadow-lg">
                         <span class="text-xl">4,8</span>
                         <div class="flex text-lg">
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
                         </div>
                         <span class="theme-text-muted font-normal text-sm ml-1">(93)</span>
-                    </div>
-
-                    <!-- Status Badge (Groß) -->
-                    <div class="absolute top-6 right-6 inline-flex items-center gap-2 px-4 py-2 rounded theme-bg-badge border-red-500/40 theme-text-main text-sm font-semibold shadow-lg"> 
-                        <i class="fa-regular fa-clock text-red-500 text-lg"></i>
-                        <span class="text-sm">Geschlossen · Öffnet Fr 09:00</span>
                     </div>
                     
                     <!-- Title/Name (Maximierte Lesbarkeit) -->
